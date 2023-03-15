@@ -1,0 +1,42 @@
+version: "3"
+services:
+
+  vprodb:
+    image: docker1anil/aurora_db:v1
+    ports:
+      - "3306:3306"
+    volumes:
+      - auroradb:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=devops123
+
+  vprocache01:
+    image: memcached
+    ports:
+      - "11211:11211"
+
+  vpromq01:
+    image: rabbitmq
+    ports:
+      - "15672:15672"
+    environment:
+      - RABBITMQ_DEFAULT_USER=guest
+      - RABBITMQ_DEFAULT_PASS=guest
+
+  auroraapp:
+    image: docker1anil/aurora_app:v1
+    ports:
+      - "8080:8080"
+    volumes:
+      - appdb:/usr/local/tomcat/webapps
+
+
+  nginxweb:
+    image: docker1anil/aurora_lb:v1
+    ports:
+      - "80:80"
+
+
+volumes:
+  auroradb: {}
+  appdb: {}
