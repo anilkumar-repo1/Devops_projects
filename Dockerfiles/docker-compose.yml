@@ -2,7 +2,7 @@ version: "3"
 services:
 
   vprodb:
-    image: docker1anil/aurora_db:v3
+    image: imranvisualpath/vprdbfix
     ports:
       - "3306:3306"
     volumes:
