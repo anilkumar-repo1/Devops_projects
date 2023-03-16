@@ -2,13 +2,13 @@ version: "3"
 services:
 
   vprodb:
-    image: docker1anil/aurora_db:v1
+    image: docker1anil/aurora_db:v3
     ports:
       - "3306:3306"
     volumes:
       - auroradb:/var/lib/mysql
     environment:
-      - MYSQL_ROOT_PASSWORD=devops123
+      - MYSQL_ROOT_PASSWORD=vprodbpass
 
   vprocache01:
     image: memcached
@@ -24,7 +24,7 @@ services:
       - RABBITMQ_DEFAULT_PASS=guest
 
   auroraapp:
-    image: docker1anil/aurora_app:v1
+    image: imranvisualpath/vproappfix
     ports:
       - "8080:8080"
     volumes:
