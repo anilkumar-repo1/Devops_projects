@@ -1,4 +1,4 @@
-FROM mysql:5.7
+FROM mysql:5.7.25
 LABEL "Project"="Aurora"
 LABEL "Author"="Anil"
 ENV MYSQL_ROOT_PASSWORD='devops123'
